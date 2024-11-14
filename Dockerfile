@@ -1,8 +1,7 @@
-FROM golang:1.16
+FROM golang:1.23.3
 MAINTAINER Frank R <12985912+fritchie@users.noreply.github.com>
 
-RUN apt-get update
-RUN apt-get -y install nvme-cli
+RUN apt-get update && apt-get -y --no-install-recommends install nvme-cli && apt-get autoremove
 
 WORKDIR /go/src/nvme_exporter
 COPY . .
